@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    container_name: delivery-sse-backend
+    ports:
+      - "3060:3060"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: delivery-sse-frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    restart: unless-stopped
