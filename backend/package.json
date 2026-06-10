@@ -4,11 +4,19 @@
   "description": "Servidor SSE para rastreamento de entregas em tempo real",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest --forceExit",
+    "lint": "eslint ."
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
