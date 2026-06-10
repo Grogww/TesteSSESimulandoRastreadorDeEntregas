@@ -1,5 +1,7 @@
 # 📦 Delivery Tracker — SSE (Server-Sent Events)
 
+[![CI/CD Pipeline](https://github.com/Grogww/TesteSSESimulandoRastreadorDeEntregas/actions/workflows/cicd.yml/badge.svg)](https://github.com/Grogww/TesteSSESimulandoRastreadorDeEntregas/actions/workflows/cicd.yml)
+
 Sistema de rastreamento de entregas em tempo real utilizando **Server-Sent Events (SSE)** para comunicação unidirecional entre servidor e cliente via EventStream.
 
 Projeto desenvolvido para a disciplina de **Desenvolvimento Web 2**.
@@ -125,3 +127,27 @@ npx serve -l 8080
 - **Content-Type `text/event-stream`:** formato padrão de resposta SSE
 - **Heartbeat:** manutenção de conexão persistente
 - **Reconexão automática:** comportamento nativo do EventSource ao perder conexão
+
+
+## CI/CD com GitHub Actions
+
+Pipeline automatizado configurado em `.github/workflows/cicd.yml`, disparado a cada `push` e `pull_request` na branch `main`.
+
+**Job 1 — CI (`build-and-test`):**
+- Instala dependências com `npm ci`
+- Roda análise de código com ESLint (`npm run lint`)
+- Executa testes automatizados com Jest + Supertest (`npm test`)
+
+**Job 2 — CD (`deploy-simulation`):** executa apenas em `push` na `main` e só se o CI passar (`needs: build-and-test`).
+- Valida o build das imagens Docker (`docker compose build`)
+- Empacota o artefato e simula a publicação em produção
+
+Para testar localmente:
+\`\`\`bash
+cd backend
+npm install
+npm run lint
+npm test
+\`\`\`
+
+
