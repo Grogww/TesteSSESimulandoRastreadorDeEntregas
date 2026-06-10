@@ -128,6 +128,7 @@ npx serve -l 8080
 - **Heartbeat:** manutenção de conexão persistente
 - **Reconexão automática:** comportamento nativo do EventSource ao perder conexão
 
+---
 
 ## CI/CD com GitHub Actions
 
